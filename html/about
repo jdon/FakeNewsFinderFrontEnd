@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>about</title>
+	<title>About</title>
 </head>
 <body>
-<div>Fake News
-Fake News is a long standing phenomenon cositsting of information that has the malicious intent to decieve its readers under the guise of being authentic. Recently with the 2016 US presedential election fake news has taken the spotlight and gained a lot of media attention. Fake news websites have changed from being satire articles set up by only a few websites to being a widespread problem and has even been reported by a few reputable</div> 
+<div><p><center><b>Fake News</b></center></p>
+<p><center>Fake News is a long standing phenomenon cositsting of information that has the malicious intent to decieve its readers under the guise of being authentic. Recently with the 2016 US presedential election fake news has taken the spotlight and gained a lot of media attention.</center></p>
+
+<p><center>Fake news websites have changed from looking very unprofessional and mainly for the use of satire, to looking very professional with a serious intent to decieve. Distinguishing between fake news and real news is harder than ever. It is clear that fact checking is now more important than ever</center></p></div>
+
+<p><center><b>How We Determine What Is Fake News And What Is Not</b></center></p>
+
+<p><center>We are using the mercury api to search through the article you have provided the link for then we are giving that information to the politifacts api to give us a score</center></p> 
 </body>
 </html>
