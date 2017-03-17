@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fake News Finder</title>
+</head>
+<body>
+<script>
+function search(){
+	var url = document.getElementById("searchbox").value;
+	var uri = encodeURIComponent(url);
+	var location = window.location;
+	window.open(location+"url/" + uri);
+}
+</script>
+
+<input type="text" id="searchbox">
+<button type="button" onclick="searchbutton()">Click to check</button>
+
+</body>
+</html>
