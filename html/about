@@ -11,7 +11,7 @@
 
 <p><center><b>How We Determine What Is Fake News And What Is Not</b></center></p>
 
-<p><center>We believe </center></p>
+<p><center>We believe in transparancey when it come to distinguishing fake news. Without an open source project a fake news finder is opne to all sort od bias from the creators. Every attempt to make this project unbiased has been taken. We are not hiding any of the stages that we use to determine what is fake and what is not.</center></p>
 
 <p><center>We are using the <a href="https://mercury.postlight.com/web-parser/"> mercury api</a> to search through the article you have provided the link for, then we are giving that information to the <a href="http://static.politifact.com/api/doc.html">politifacts api</a> to give us a numerical score which of how fake they believe the news to be, we then provide this to you</center></p> 
 </body>
