@@ -26,13 +26,15 @@ function search(){
 			document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
 		} else {
 			document.getElementById("fake").innerHTML = "This article is not fake";
+			document.getElementById("type").innerHTML = "";
+			document.getElementById("reasons").innerHTML = "";
 		}
 	});
 
 
 }
 </script>
-
+<center>
 <input type="text" id="searchbox" value="http://weeklyworldnews.com/headlines/49503/leprechauns-attack/">
 <button type="button" onclick="search()">Click to check</button>
 
@@ -44,6 +46,6 @@ function search(){
 	<p id="type"></p>
 	<p id="reasons"></p>
 </div>
-
+</center>
 </body>
 </html>
