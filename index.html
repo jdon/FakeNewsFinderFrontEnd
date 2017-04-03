@@ -13,7 +13,7 @@ function search(){
 	//document.getElementById("domain").innerHTML = jsonpath;
 
 	$.getJSON(jsonpath, function(data){	
-		var obj = JSON.parse(data);
+		var obj = data;
 
 		document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
 		document.getElementById("title").innerHTML = "Title: " + obj.title;
