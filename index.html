@@ -9,7 +9,7 @@
 function search(){
 	var url = document.getElementById("searchbox").value;
 	var uri = encodeURIComponent(url);
-	var jsonpath = ("http://fake.jdon.uk/url/" + uri);
+	var jsonpath = ("https://fake.jdon.uk/url/" + uri);
 	//document.getElementById("domain").innerHTML = jsonpath;
 
 	$.getJSON(jsonpath, function(data){	
