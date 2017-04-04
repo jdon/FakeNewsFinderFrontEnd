@@ -1,0 +1,442 @@
+body {
+    line-height: 1;
+}
+
+ol,ul {
+    list-style: none;
+}
+
+blockquote,q {
+    quotes: none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    overflow: scroll;
+}
+
+/*Page content*/
+.container {
+    color: #000;
+    font-family: 'OpenSansBold',sans-serif;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    line-height: 2;
+}
+
+/* Header css */
+#header {
+    padding: 9px 0 19px;
+    height: 50px;
+    width: 100%;
+}
+
+#header h1 {
+    float: left;
+    margin: 0;
+    padding: 20px 12px 20px 4%;
+    width: auto;
+    height: auto;
+    line-height: 1.5;
+}
+
+#header h1 a {
+    color: #000;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+/* Nav */
+#menu {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 4%;
+    text-align: right;
+}
+
+ul#menu {
+    padding: 25px;
+    font-family: 'OpenSansBold',sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#menu ul li {
+    height: 50px;
+}
+
+ul#menu li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+ul#menu li a {
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+}
+
+a.onpage {
+    color: #09f !important;
+}
+
+ul#menu li a:hover {
+    color: #09f;
+    text-decoration: underline;
+}
+
+#iemenu {
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+ul#iemenu {
+    padding: 15px;
+}
+
+#iemenu ul li {
+    height: 62px;
+}
+
+ul#iemenu li {
+    list-style-type: none;
+    display: inline;
+}
+
+ul#iemenu li a {
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Mobile/tablet nav */
+.dropdownmenu {
+    display: none;
+}
+
+.dropdownbox li {
+    display: none;
+}
+
+/* Index */
+.box{
+  margin: 100px auto;
+  width: 300px;
+  height: 50px;
+}
+
+form {
+                width:500px;
+                margin:50px auto;
+}
+.search {
+                padding:8px 15px;
+                background:rgba(50, 50, 50, 0.2);
+                border:0px solid #dbdbdb;
+}
+.button {
+                position:relative;
+                padding:6px 15px;
+                left:-8px;
+                border:2px solid #207cca;
+                background-color:#207cca;
+                color:#fafafa;
+}
+.button:hover  {
+                background-color:#fafafa;
+                color:#207cca;
+}
+
+
+.buttons {
+    margin: 0 auto;
+    text-align: center;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+    top: 48%;
+    position: absolute;
+    width: 100%;
+}
+
+/* Page content */
+.pagecontent {
+    max-width: 1020px;
+}
+
+.pagecontent h1 {
+    margin: 0;
+}
+
+/* About us images */
+.aboutusimages {
+    padding: 30px 0 10px;
+}
+
+.aboutusimages img {
+    margin-right: 50px;
+    width: 200px;
+    height: 200px;
+}
+
+/* CSS for tablets */
+@media screen and (max-width: 1280px) {
+    ul#menu li a {
+        padding: 10px;
+    }
+
+    #iemenu {
+        display: none;
+    }
+
+    #welcome strong {
+        font-size: 50px;
+        top: 28%;
+    }
+
+    .buttons {
+        margin: 0 auto;
+        text-align: center;
+        width: auto;
+        left: 0;
+        text-align: center;
+        margin: 0 auto;
+        top: 55%;
+        position: absolute;
+        width: 100%;
+    }
+
+    .aboutusimages img {
+        margin-right: 10px;
+    }
+
+    #footer,#iefooter {
+    }
+}
+
+/* Cart */
+#cd-gallery-items li {
+    margin-bottom: 1.5em;
+}
+
+#cd-gallery-items li img {
+    width: 100%;
+    display: block;
+    border-radius: .25em;
+}
+
+/* CSS for portrait tablet */
+@media screen and (max-width: 750px) {
+    #menu {
+        display: none;
+    }
+
+    .dropdownmenu {
+        display: inline;
+        position: absolute;
+        right: 0;
+        text-decoration: none;
+        color: #000;
+        margin: 17px 2%;
+        float: right;
+        font-size: 30px;
+    }
+
+    .dropdown ul {
+        position: absolute;
+        display: inline;
+        right: 2%;
+        top: 65px;
+        background-color: rgba(255,255,255,0.9);
+        text-align: right;
+        margin: 0;
+        padding: 0 0 5px;
+        width: 180px;
+        z-index: 1;
+    }
+
+    .dropdownbox li {
+        display: none;
+    }
+
+    .dropdown ul li {
+        padding: 0 10px 0 0;
+    }
+
+    .dropdown ul li a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    #header {
+        padding: 0;
+    }
+
+    #header h1 a {
+        font-size: 23px;
+    }
+
+    .buttons {
+        display: none;
+    }
+
+    .pagecontent h1 {
+        font-size: 27px;
+    }
+
+    #welcome strong {
+        font-size: 35px;
+        top: 38%;
+    }
+
+    #deliveryinfo {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        height: auto;
+    }
+
+    .socialpanel {
+        padding: 0;
+        margin: auto;
+        line-height: 1.5;
+    }
+
+    .socialpanel h2 {
+        font-size: 18px;
+    }
+
+    .socialpanel p {
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+    .socialmedia {
+        padding-bottom: 10px;
+    }
+
+    .socialpanel form {
+        padding: 10px 10px 15px;
+    }
+
+    .socialpanel input {
+        width: 150px;
+        height: 30px;
+    }
+
+    .socialpanel input[type=submit] {
+        width: 75px;
+        height: 42px;
+        margin-left: 5px;
+    }
+
+    #footer,#iefooter {
+        font-size: 14px;
+    }
+
+    #footer p,#iefooter p {
+        padding: 0;
+    }
+}
+
+/* CSS for mobile */
+@media screen and (max-height: 350px) {
+    #welcome strong {
+        font-size: 30px;
+        top: 35%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #welcome strong {
+        font-size: 20px;
+        top: 35%;
+    }
+
+    #ordersub {
+        width: 266px;
+    }
+
+    #ordersub input {
+        width: 130px;
+    }
+
+    #ingredients {
+        width: 250px;
+    }
+
+    /*Cart*/
+    .products {
+        list-style: none;
+        margin-right: 300px;
+        padding: 0;
+        height: 100%;
+    }
+
+    .products li {
+        display: inline;
+        float: left;
+        margin: 10px;
+    }
+
+    .item {
+        display: block;
+        text-decoration: none;
+    }
+
+    .item img {
+        border: 1px solid #333;
+    }
+
+    .item p {
+        margin: 0;
+        font-weight: 700;
+        text-align: center;
+        color: #c3c3c3;
+    }
+
+    .cart {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        background: #ccc;
+        padding: 0 10px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #555;
+    }
+
+    h2 {
+        position: absolute;
+        font-size: 16px;
+        left: 10px;
+        bottom: 20px;
+        color: #555;
+    }
+
+    .total {
+        margin: 0;
+        text-align: right;
+        padding-right: 20px;
+    }
+}
