@@ -6,33 +6,49 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
-function search(){
-	var url = document.getElementById("searchbox").value;
-	var uri = encodeURIComponent(url);
-	var jsonpath = ("https://fake.jdon.uk/url/" + uri);
-	//document.getElementById("domain").innerHTML = jsonpath;
-
-	$.getJSON(jsonpath, function(data){	
-		var obj = data;
-
-		document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
-		document.getElementById("title").innerHTML = "Title: " + obj.title;
-		document.getElementById("author").innerHTML = "Author: " + obj.author;
-
-
-		if (obj.domainList.fake) {
-			document.getElementById("fake").innerHTML = "This article is fake";
-			document.getElementById("type").innerHTML = "Reasons: " + obj.domainList.notes.type1 + ", " +  obj.domainList.notes.type2 + ", " + obj.domainList.notes.type3;
-			document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
-		} else {
-			document.getElementById("fake").innerHTML = "This article is not fake";
-			document.getElementById("type").innerHTML = "";
-			document.getElementById("reasons").innerHTML = "";
-		}
-	});
-
-
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+    } else {
+    xhr = null;
+  }
+  return xhr;
 }
+function search(){
+    var xhr = createCORSRequest('GET', "http://fake.jdon.uk/url/" + encodeURIComponent($("#searchbox").val()));//URL not copy pasta
+    if (!xhr) {
+      throw new Error('CORS not supported');
+    }
+    xhr.onload = function(e) {
+        if (this.status == 200) {
+            var json = this.response;
+            console.log(json);
+        }
+
+    var obj = JSON.parse(json);
+
+	document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
+	document.getElementById("title").innerHTML = "Title: " + obj.title;
+	document.getElementById("author").innerHTML = "Author: " + obj.author;
+
+	if (obj.domainList.fake) {
+		document.getElementById("fake").innerHTML = "This article is believed to be fake";
+		document.getElementById("type").innerHTML = "Reasons: " + obj.domainList.notes.type1 + ", " +  obj.domainList.notes.type2 + ", " + obj.domainList.notes.type3;
+		document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
+	} else {
+		document.getElementById("fake").innerHTML = "This article is not believed to be fake";
+		document.getElementById("type").innerHTML = "";
+		document.getElementById("reasons").innerHTML = "";
+	}    
+
+    };
+    xhr.send();
+}
+//chrome.exe --disable-web-security --user-data-dir
 </script>
 <center>
 <input type="text" id="searchbox" value="http://weeklyworldnews.com/headlines/49503/leprechauns-attack/">
@@ -45,7 +61,14 @@ function search(){
 	<p id="fake"></p>
 	<p id="type"></p>
 	<p id="reasons"></p>
+	<p id="out"></p>
 </div>
+
+<div>While we try our best to determine the credibility of an article we reccommend that you do your own independent fact checking</div>
 </center>
+
+<footer>
+	<a href="">About Us</a>
+</footer>
 </body>
 </html>
