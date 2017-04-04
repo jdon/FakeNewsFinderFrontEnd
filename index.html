@@ -1,74 +1,110 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Fake News Finder</title>
-</head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
-function createCORSRequest(method, url) {
-  var xhr = new XMLHttpRequest();
-  if ("withCredentials" in xhr) {
-    xhr.open(method, url, true);
-    } else if (typeof XDomainRequest != "undefined") {
-    xhr = new XDomainRequest();
-    xhr.open(method, url);
-    } else {
-    xhr = null;
-  }
-  return xhr;
-}
-function search(){
-    var xhr = createCORSRequest('GET', "http://fake.jdon.uk/url/" + encodeURIComponent($("#searchbox").val()));//URL not copy pasta
-    if (!xhr) {
-      throw new Error('CORS not supported');
-    }
-    xhr.onload = function(e) {
-        if (this.status == 200) {
-            var json = this.response;
-            console.log(json);
-        }
 
-    var obj = JSON.parse(json);
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
 
-	document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
-	document.getElementById("title").innerHTML = "Title: " + obj.title;
-	document.getElementById("author").innerHTML = "Author: " + obj.author;
+		<title>Fake News Finders</title>
 
-	if (obj.domainList.fake) {
-		document.getElementById("fake").innerHTML = "This article is believed to be fake";
-		document.getElementById("type").innerHTML = "Reasons: " + obj.domainList.notes.type1 + ", " +  obj.domainList.notes.type2 + ", " + obj.domainList.notes.type3;
-		document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
-	} else {
-		document.getElementById("fake").innerHTML = "This article is not believed to be fake";
-		document.getElementById("type").innerHTML = "";
-		document.getElementById("reasons").innerHTML = "";
-	}    
+		<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+		<link href="./css/stylesheet" rel="stylesheet" type="text/css">
+<!-- Dropdown -->
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/dropdown.js"></script>
 
-    };
-    xhr.send();
-}
-//chrome.exe --disable-web-security --user-data-dir
-</script>
-<center>
-<input type="text" id="searchbox" value="Enter a URL..">
-<button type="button" onclick="search()">Click to check</button>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link rel="shortcut icon" href="http://www.yoursite.com/favicon.ico?v=2"/>
 
-<div id = "newbox">
-	<p id="domain"> </p>
-	<p id="title"> </p>
-	<p id="author"></p>
-	<p id="fake"></p>
-	<p id="type"></p>
-	<p id="reasons"></p>
-	<p id="out"></p>
-</div>
+<!--///////////////////////////////////////-->
 
-<div>While we try our best to determine the credibility of an article we reccommend that you do your own independent fact checking</div>
-</center>
+		<script>
+		function search(){
+			var url = document.getElementById("searchbox").value;
+			var uri = encodeURIComponent(url);
+			var jsonpath = ("http://fake.jdon.uk/url/" + uri);
+			//document.getElementById("domain").innerHTML = jsonpath;
 
-<footer>
-	<a href="">About Us</a>
-</footer>
-</body>
-</html>
+			$.getJSON(jsonpath, function(data){
+				var obj = data;
+
+				document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
+				document.getElementById("title").innerHTML = "Title: " + obj.title;
+				document.getElementById("author").innerHTML = "Author: " + obj.author;
+
+
+				if (obj.domainList.fake) {
+					document.getElementById("fake").innerHTML = "This article is fake";
+					document.getElementById("type").innerHTML = "Reasons: " + obj.domainList.notes.type1 + ", " +  obj.domainList.notes.type2 + ", " + obj.domainList.notes.type3;
+					document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
+				} else {
+					document.getElementById("fake").innerHTML = "This article is not fake";
+				}
+			});
+
+
+		}
+		</script>
+
+<!--///////////////////////////////////////////////-->
+	</head>
+
+	<body>
+	<div class="container">
+		<header id="header">
+			<h1>Fake News Finders</h1>
+
+			<!-- Navigation -->
+			<nav>
+				<ul id="menu">
+					<li><a class="onpage" href="./index.html">Home</a></li>
+					<li><a href="./aboutus.html">About Us</a></li>
+				</ul>
+
+			<!-- Nav for mobile/tablet -->
+			<div class="dropdown">
+				<a class="dropdownmenu" href="./index.html#">☰</a>
+					<ul class="dropdownbox">
+						<li><a class="onpage" href="./index.html">Home</a></li>
+						<li><a href="./aboutus.html">About Us</a></li>
+					</ul>
+			</div>
+			</nav>
+
+			<!--[if lte IE 8]>
+			<ul id="iemenu">
+				<li><a class="onpage" href="index.html">Home</a></li>
+				<li><a href="pages/aboutus.html">About Us</a></li>
+				<li><a href="pages/menu.html">Menu</a></li>
+				<li><a href="pages/sandwichbuilder.html">Sandwich Builder</a></li>
+				<li><a href="pages/delivery.html">Delivery</a></li>
+			</ul>
+			<![endif]-->
+		</header>
+
+		<div class="box">
+			<div class="container">
+				<input id="searchbox" value="" type="text">
+				<button type="button" onclick="search()">Click to check</button>
+
+		</div>
+
+			<div id="newbox">
+				<p id="domain"> </p>
+				<p id="title"> </p>
+				<p id="author"></p>
+				<p id="fake"></p>
+				<p id="type"></p>
+				<p id="reasons"></p>
+			</div>
+
+
+		<!-- Footer -->
+
+		<div id="footer">
+		<footer>
+
+		</footer>
+		</div>
+	</div>
+	</div>
+</body></html>
