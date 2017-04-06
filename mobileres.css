@@ -1,0 +1,145 @@
+/* Mobile/tablet nav */
+.dropdownmenu {
+    display: none;
+}
+
+.dropdownbox li {
+    display: none;
+}
+
+/* CSS for portrait tablet */
+@media screen and (max-width: 750px) {
+    #menu {
+        display: none;
+    }
+
+    .dropdownmenu {
+        display: inline;
+        position: absolute;
+        right: 0;
+        text-decoration: none;
+        color: #000;
+        margin: 17px 2%;
+        float: right;
+        font-size: 30px;
+    }
+
+    .dropdown ul {
+        position: absolute;
+        display: inline;
+        right: 2%;
+        top: 65px;
+        background-color: rgba(255,255,255,0.9);
+        text-align: right;
+        margin: 0;
+        padding: 0 0 5px;
+        width: 180px;
+        z-index: 1;
+    }
+
+    .dropdownbox li {
+        display: none;
+    }
+
+    .dropdown ul li {
+        padding: 0 10px 0 0;
+    }
+
+    .dropdown ul li a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    #header {
+        padding: 0;
+    }
+
+    #header h1 a {
+        font-size: 23px;
+    }
+
+    .pagecontent h1 {
+        font-size: 27px;
+    }
+
+    #welcome strong {
+        font-size: 35px;
+        top: 38%;
+    }
+
+
+    #footer,#iefooter {
+        font-size: 14px;
+    }
+
+    #footer p,#iefooter p {
+        padding: 0;
+    }
+}
+
+/* CSS for tablets */
+@media screen and (max-width: 1280px) {
+    ul#menu li a {
+        padding: 10px;
+    }
+
+    #iemenu {
+        display: none;
+    }
+
+    #welcome strong {
+        font-size: 50px;
+        top: 28%;
+    }
+
+    .buttons {
+        margin: 0 auto;
+        text-align: center;
+        width: auto;
+        left: 0;
+        text-align: center;
+        margin: 0 auto;
+        top: 55%;
+        position: absolute;
+        width: 100%;
+    }
+
+    .aboutusimages img {
+        margin-right: 10px;
+    }
+
+    #footer,#iefooter {
+    }
+}
+
+input[type=text] {
+background: white;
+border: 2px solid #000;
+border-radius: 5px;
+color: #000;
+width: 200px;
+height: 30px;
+outline: none;
+}
+
+.button {
+background: white;
+border: 2px solid #000;
+border-radius: 5px;
+color: red;
+width: 30px;
+height: 36px;
+outline: none;
+}
+
+.search1 {
+    margin: 0 auto;
+    text-align: center;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+    top: 10%;
+    position: absolute;
+    width: 100%;
+    line-height: 1;
+}
