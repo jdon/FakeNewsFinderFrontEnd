@@ -7,7 +7,9 @@
 		<title>Fake News Finders</title>
 
 		<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="./css/mobilecss.css">
 		<link href="./css/stylesheet" rel="stylesheet" type="text/css">
+		<link href="./css/mobcss" rel="stylesheet" type="text/css">
 <!-- Dropdown -->
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/dropdown.js"></script>
@@ -56,9 +58,11 @@
 			<!-- Navigation -->
 			<nav>
 				<ul id="menu">
-					<li><a class="onpage" href="./index.html">Home</a></li>
+					<li><a class="onpage" href="">Home</a></li>
 					<li><a href="./aboutus.html">About Us</a></li>
 				</ul>
+
+
 
 			<!-- Nav for mobile/tablet -->
 			<div class="dropdown">
@@ -69,15 +73,15 @@
 					</ul>
 			</div>
 			</nav>
-			
 		</header>
 
-		<div class="box">
-			<div class="container">
-				<input id="searchbox" value="" type="text">
-				<button type="button" onclick="search()">Click to check</button>
+			<div id="check">
+					<div class="search">
+			<input id="searchbox" value="" type="text">
+			<button class="button" onclick="search()">►</button>
+			<p>Whilst we try our best to determine the credibility of an article,
+				<br>we also recommned that you also do your own independednt fact checking. </p>
 
-		</div>
 
 			<div id="newbox">
 				<p id="domain"> </p>
@@ -93,7 +97,7 @@
 
 		<div id="footer">
 		<footer>
-
+Student names or nah?
 		</footer>
 		</div>
 	</div>
