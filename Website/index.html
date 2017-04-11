@@ -19,36 +19,86 @@
 
 <!--///////////////////////////////////////-->
 
-		<script>
-		$(window).load(function(){
+<script>
+$(window).load(function() {
 		search();
 		});
-		function search(){
-			var url = document.getElementById("searchbox").value;
-			var uri = encodeURIComponent(url);
-			var jsonpath = ("http://fake.jdon.uk/url/" + uri);
-			//document.getElementById("domain").innerHTML = jsonpath;
 
-			$.getJSON(jsonpath, function(data){
-				var obj = data;
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
 
-				document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
-				document.getElementById("title").innerHTML = "Title: " + obj.title;
-				document.getElementById("author").innerHTML = "Author: " + obj.author;
+  if ("withCredentials" in xhr) {
+    	xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+    	xhr = new XDomainRequest();
+    	xhr.open(method, url);
+    } else {
+    	xhr = null;
+  	}
+  return xhr;
+}
 
+function search() {
+    var xhr = createCORSRequest('GET', "http://fake.jdon.uk/url/" + encodeURIComponent($("#searchbox").val()));
+    if (!xhr) {
+      throw new Error('CORS not supported');
+    }
+    xhr.onload = function(e) {
+        if (this.status == 200) {
+            var json = this.response;
+        }
+	
+    var obj = JSON.parse(json);
 
-				if (obj.domainList.fake) {
-					document.getElementById("fake").innerHTML = "This article is fake";
-					document.getElementById("type").innerHTML = "Reasons: " + obj.domainList.notes.type1 + ", " +  obj.domainList.notes.type2 + ", " + obj.domainList.notes.type3;
-					document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
-				} else {
-					document.getElementById("fake").innerHTML = "This article is not fake";
-				}
-			});
+    if (!(obj.domain)) {
+    	document.getElementById("domain").innerHTML = "";
+    } else {
+    	document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
+    }
+	
+	if (!(obj.title)) {
+		document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
+	} else {
+		document.getElementById("title").innerHTML = "Title of article: " + obj.author;
+	};
 
+	if (!(obj.author)) {
+		document.getElementById("author").innerHTML = "Sorry, we cannot find the author of this article";
+	} else {
+		document.getElementById("author").innerHTML = "Author: " + obj.author;
+	}
+	
 
+	if (obj.domainList.fake) {
+		document.getElementById("fake").innerHTML = "This article is fake";
+
+		document.getElementById("type").innerHTML = "Reasons: ";
+		
+		if (obj.domainList.notes.type1) {
+			document.getElementById("type").innerHTML += obj.domainList.notes.type1;
 		}
-		</script>
+
+		if (obj.domainList.notes.type2) {
+			document.getElementById("type").innerHTML += ", " + obj.domainList.notes.type2;
+		}
+
+		if (obj.domainList.notes.type3) {
+			document.getElementById("type").innerHTML += ", " + obj.domainList.notes.type3;
+		}
+
+		if (obj.domainList.notes.notes) {
+		document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
+		}
+
+	} else {
+		document.getElementById("fake").innerHTML = "This article is not fake";
+	}
+
+    };
+
+    xhr.send();
+}
+</script>
 
 <!--///////////////////////////////////////////////-->
 	</head>
