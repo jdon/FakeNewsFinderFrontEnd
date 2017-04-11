@@ -20,6 +20,9 @@
 <!--///////////////////////////////////////-->
 
 		<script>
+		$(window).load(function(){
+		search();
+		});
 		function search(){
 			var url = document.getElementById("searchbox").value;
 			var uri = encodeURIComponent(url);
@@ -77,10 +80,11 @@
 
 			<div id="check">
 					<div class="search">
-			<input id="searchbox" value="" type="text">
-			<button class="button" onclick="search()">►</button>
+	<input id="searchbox" value="<?php echo ltrim($_SERVER['PATH_INFO'], '/https:/'); ?>" type="text">
+			<button class="button" onload="search()" onclick="search()">►</button>
+			
 			<p>Whilst we try our best to determine the credibility of an article,
-				<br>we also recommned that you also do your own independednt fact checking. </p>
+				<br>we also recommend that you also do your own independent fact checking. </p>
 
 
 			<div id="newbox">
@@ -91,7 +95,7 @@
 				<p id="type"></p>
 				<p id="reasons"></p>
 			</div>
-
+			
 
 		<!-- Footer -->
 
