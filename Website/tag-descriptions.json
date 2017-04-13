@@ -1,13 +1,36 @@
-{
-	"satire": "The article is a satire piece and not to be taken seriously", 
-	"fake": "The article is fake and should not be believed", 
-	"bias": "The organization or author of this article is known to have a clear bias to a certain point of view",
-	"conspiracy": "The article is considered to be a conspiracy theory",
-	"rumor": "There is no factual evidence to support the information in this article ",
-	"state": "The organization that this article has come from belongs to a repressive state operating under government sanction", 
-	"junksci": "The information in the article promotes pseudoscience, metaphysics, naturalistic fallacies, and other scientifically dubious claims.", 
-	"hate": "The organization or author that published this article is known to actively promote racism, misogyny, homophobia, and other forms of discrimination", 
-	"clickbait": "The article headline, description, and/or images have been gretaed exaggerated or are misleading", 
-	"unreliable": "The infromation provided in the article requires further verification", 
-	"political": "The organization or author of the article is known to support certain political orientations"
+{	"tags": {
+		"satire": {
+			"description": "The article is a satire piece and should not be taken seriously."
+		},
+		"fake": {
+			 "description":"The article is fake and should not be believed."
+		},
+		"bias": {
+			"description": "The organization or author of this article is known to have a clear bias to a certain point of view."
+		},
+		"conspiracy": {
+			"description": "The article is considered to be a conspiracy theory."
+		},
+		"rumor": {
+			"description": "There is no factual evidence to support the information in this article."
+		},
+		"state": {
+			"description": "The organization that this article has come from belongs to a repressive state operating under government sanction."
+		},
+		"junksci": {
+			"description": "The information in the article promotes pseudoscience, metaphysics, naturalistic fallacies, and other scientifically dubious claims."
+		},
+		"hate": {
+			"description": "The organization or author that published this article is known to actively promote racism, misogyny, homophobia, and other forms of discrimination."
+		},
+		"clickbait": {
+			"description": "The article headline, description, and/or images have been greatly exaggerated and/or are misleading."
+		},
+		"unreliable": {
+			"description": "The infromation provided in the article requires further verification."
+		},
+		"political": {
+			"description": "The organization or author of the article is known to support certain political orientations."
+		}	
+	}
 }
