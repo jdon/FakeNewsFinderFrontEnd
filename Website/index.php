@@ -49,9 +49,6 @@ function search() {
             var json = this.response;
         }
 
-	    $.getJSON('tag-descriptions.json', function(descriptions) {
-			console.log(descriptions);
-
 			var obj = JSON.parse(json);
 			console.log(obj);
 
@@ -78,7 +75,7 @@ function search() {
 				document.getElementById("fake").innerHTML = "This article is fake";
 
 				if (obj.domainList.notes.notes) {
-				document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
+					document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
 				}
 
 				document.getElementById("type").innerHTML = "Reasons: ";
@@ -89,20 +86,17 @@ function search() {
 
 				if (obj.domainList.notes.type2) {
 					document.getElementById("type").innerHTML += ", " + obj.domainList.notes.type2;
-				}
+
 
 				if (obj.domainList.notes.type3) {
 					document.getElementById("type").innerHTML += ", " + obj.domainList.notes.type3;
-				}
+
 
 			} else {
 				document.getElementById("fake").innerHTML = "This article is not fake";
 				document.getElementById("reasons").innerHTML = "";
 				document.getElementById("type").innerHTML = "";
 			}
-
-
-	    });
     
     };
 
