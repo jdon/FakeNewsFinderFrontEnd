@@ -47,63 +47,61 @@ function search() {
     xhr.onload = function(e) {
         if (this.status == 200) {
             var json = this.response;
-        }
+        }	
 
-	    $.getJSON('tag-descriptions.json', function(descriptions) {
-			console.log(descriptions);
+        	$.getJSON("tag-descriptions.json", function(data){
 
-			var obj = JSON.parse(json);
-			console.log(obj);
+        		console.log(data);
 
-		    if (!(obj.domain)) {
-		    	document.getElementById("domain").innerHTML = "";
-		    } else {
-		    	document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
-		    }
-			
-			if (!(obj.title)) {
-				document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
-			} else {
-				document.getElementById("title").innerHTML = "Title of article: " + obj.title;
-			};
+				var obj = JSON.parse(json);
+				console.log(obj);
 
-			if (!(obj.author)) {
-				document.getElementById("author").innerHTML = "Sorry, we cannot find the author of this article";
-			} else {
-				document.getElementById("author").innerHTML = "Author: " + obj.author;
-			}
-			
-
-			if (obj.domainList.fake) {
-				document.getElementById("fake").innerHTML = "This article is fake";
-
-				if (obj.domainList.notes.notes) {
-				document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
-				}
-
-				document.getElementById("type").innerHTML = "Reasons: ";
+			    if (!(obj.domain)) {
+			    	document.getElementById("domain").innerHTML = "";
+			    } else {
+			    	document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
+			    }
 				
-				if (obj.domainList.notes.type1) {
-					document.getElementById("type").innerHTML += obj.domainList.notes.type1;
+				if (!(obj.title)) {
+					document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
+				} else {
+					document.getElementById("title").innerHTML = "Title of article: " + obj.title;
+				};
+
+				if (!(obj.author)) {
+					document.getElementById("author").innerHTML = "Sorry, we cannot find the author of this article";
+				} else {
+					document.getElementById("author").innerHTML = "Author: " + obj.author;
 				}
+				
 
-				if (obj.domainList.notes.type2) {
-					document.getElementById("type").innerHTML += ", " + obj.domainList.notes.type2;
+				if (obj.domainList.fake) {
+					document.getElementById("fake").innerHTML = "This article is fake";
+
+					if (obj.domainList.notes.notes) {
+						document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
+					}
+
+					document.getElementById("type").innerHTML = "Reasons";
+					
+					if (obj.domainList.notes.type1) {
+						document.getElementById("type1").innerHTML = data.tags[obj.domainList.notes.type1].description;
+					}
+
+					if (obj.domainList.notes.type2) {
+						document.getElementById("type2").innerHTML = data.tags[obj.domainList.notes.type2].description;
+					}
+
+					if (obj.domainList.notes.type3) {
+						document.getElementById("type3").innerHTML = data.tags[obj.domainList.notes.type3].description;
+					}
+
+				} else {
+					document.getElementById("fake").innerHTML = "This article is not fake";
+					document.getElementById("reasons").innerHTML = "";
+					document.getElementById("type").innerHTML = "";
 				}
-
-				if (obj.domainList.notes.type3) {
-					document.getElementById("type").innerHTML += ", " + obj.domainList.notes.type3;
-				}
-
-			} else {
-				document.getElementById("fake").innerHTML = "This article is not fake";
-				document.getElementById("reasons").innerHTML = "";
-				document.getElementById("type").innerHTML = "";
-			}
-
-
-	    });
-    
+    		});    
     };
 
     xhr.send();
@@ -143,20 +141,20 @@ function search() {
 	<input id="searchbox" value="<?php echo ltrim($_SERVER['PATH_INFO'], '/https:/'); ?>" type="text">
 			<button class="button" onload="search()" onclick="search()">►</button>
 			
-			<p>Whilst we try our best to determine the credibility of an article,
-				<br>we also recommend that you also do your own independent fact checking. </p>
-
-
 			<div id="newbox">
 				<p id="domain"> </p>
 				<p id="title"> </p>
 				<p id="author"></p>
 				<p id="fake"></p>
-				<p id="type"></p>
 				<p id="reasons"></p>
+				<p id="type"></p>
+				<p id="type1"></p>
+				<p id="type2"></p>
+				<p id="type3"></p>
 			</div>
 			
-
+			<p>Whilst we try our best to determine the credibility of an article,
+			<br>we also recommend that you also do your own independent fact checking. </p>
 		<!-- Footer -->
 
 		<div id="footer">
