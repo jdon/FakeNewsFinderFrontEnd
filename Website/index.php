@@ -59,30 +59,31 @@ function search() {
 			    if (!(obj.domain)) {
 			    	document.getElementById("domain").innerHTML = "";
 			    } else {
-			    	document.getElementById("domain").innerHTML = "Domain: " + obj.domain;
+			    	document.getElementById("domain").innerHTML = "Domain: <br>" + obj.domain;
 			    }
 				
 				if (!(obj.title)) {
 					document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
 				} else {
-					document.getElementById("title").innerHTML = "Title of article: " + obj.title;
+					document.getElementById("title").innerHTML = "Article Title: <br> " + obj.title;
 				};
 
 				if (!(obj.author)) {
 					document.getElementById("author").innerHTML = "Sorry, we cannot find the author of this article";
 				} else {
-					document.getElementById("author").innerHTML = "Author: " + obj.author;
+					document.getElementById("author").innerHTML = "Author: <br>" + obj.author;
 				}
-				
+					
+			
 
 				if (obj.domainList.fake) {
-					document.getElementById("fake").innerHTML = "This article is fake";
+					document.getElementById("fake").innerHTML = "<br> Unfortunately, this article has been flagged based on our checks. See why below. <br>";
 
 					if (obj.domainList.notes.notes) {
 						document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
 					}
 
-					document.getElementById("type").innerHTML = "Reasons";
+					document.getElementById("type").innerHTML = " <br> Reasons";
 					
 					if (obj.domainList.notes.type1) {
 						document.getElementById("type1").innerHTML = data.tags[obj.domainList.notes.type1].description;
@@ -97,7 +98,7 @@ function search() {
 					}
 
 				} else {
-					document.getElementById("fake").innerHTML = "This article is not fake";
+					document.getElementById("fake").innerHTML = " <br> This article is deemed not fake based on our checks.";
 					document.getElementById("reasons").innerHTML = "";
 					document.getElementById("type").innerHTML = "";
 				}
@@ -153,13 +154,12 @@ function search() {
 				<p id="type3"></p>
 			</div>
 			
-			<p>Whilst we try our best to determine the credibility of an article,
-			<br>we also recommend that you also do your own independent fact checking. </p>
+			<p> </p>
 		<!-- Footer -->
 
 		<div id="footer">
 		<footer>
-Student names or nah?
+Whilst we try our best to determine the credibility of an article, we also recommend that you also do your own independent fact checking. 
 		</footer>
 		</div>
 	</div>
