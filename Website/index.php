@@ -45,25 +45,34 @@ function search() {
         if (this.status == 200) {
             var json = this.response;
         }
+
+        document.getElementById("domain").innerHTML = "";
+        document.getElementById("title").innerHTML = "";
+        document.getElementById("author").innerHTML = "";
+        document.getElementById("fake").innerHTML = "";
+        document.getElementById("reasons").innerHTML = "";
+        document.getElementById("type").innerHTML = "";
+        document.getElementById("type1").innerHTML = "";
+        document.getElementById("type2").innerHTML = "";
+        document.getElementById("type3").innerHTML = "";
+
         $.getJSON("tag-descriptions.json", function(data) {
             console.log(data);
             var obj = JSON.parse(json);
             console.log(obj);    
-            if (!(obj.domain)) {
-                document.getElementById("domain").innerHTML = "";
-            } else {
+            if (obj.domain) {
                 document.getElementById("domain").innerHTML = "<span class='DomainID'>Wesbite: </span> <br>" + obj.domain;
-            }
+            } 
+
             if (!(obj.title)) {
                 document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
             } else {
                 document.getElementById("title").innerHTML = "<span class='ArticleID'>Article Title: </span> <br>" + obj.title;
             };
-            if (!(obj.author)) {
-                document.getElementById("author").innerHTML = "";
-            } else {
+            if (obj.author) {
                 document.getElementById("author").innerHTML = "<span class='AuthorID'>Author: </span> <br>" + obj.author;
-            }
+            } 
+            
             if (obj.domainList.fake) {
                 document.getElementById("fake").innerHTML = " <span class='FakeID'>FAKE</span> <br> Unfortunately, this article has been flagged based on our checks. <br> Check out our reasoning below. ";
 
