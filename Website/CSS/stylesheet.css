@@ -4,18 +4,77 @@ ol,ul {
     list-style: none;
 }
 
-.search {
-    margin: 0 auto;
-    text-align: center;
-    left: 0;
-    text-align: center;
-    margin: 0 auto;
-    top: 21%;
-    position: absolute;
-    width: 100%;
-    line-height: 1;
-    ;
+.DomainID {
+  color: black;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 20px;
 }
+
+    .NoDomainID {
+        color: ;
+        text-transform: uppercase;
+        font-style: italic;
+        font-size: 20px;
+    }
+
+        #Domain {
+            color: red;
+        }
+
+
+
+
+.ArticleID {
+  color: ;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 19px;
+}
+
+.AuthorID {
+  color: ;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 19px;
+}
+
+    .NoAuthorID {
+        color: ;
+        text-transform: uppercase;
+        font-style: italic;
+        font-size: 19px;
+    }
+
+
+
+.FakeID {
+      text-transform: uppercase;
+      font-size: 22px;
+      font-weight: bold;
+
+}
+
+    .FakeIDText {
+        font-size: 19px;
+    }
+
+}
+
+.ReasoningID {
+          text-transform: uppercase;
+      font-size: 22px;
+      font-weight: bold;
+}
+
+
+
+//////
+
+.p {
+    color: #555;
+}
+
 
 input[type=text] {
 background: white;
@@ -24,7 +83,6 @@ border-radius: 5px;
 color: #000;
 width: 510px;
 height: 40px;
-outline: none;
 }
 
 .button {
@@ -34,36 +92,35 @@ border-radius: 5px;
 color: black;
 width: 30px;
 height: 46px;
-outline: none;
 }
 
-.search1 {
+.search {
     margin: 0 auto;
     text-align: center;
     left: 0;
     text-align: center;
     margin: 0 auto;
-    top: 50%;
+    top: 20%;
     position: absolute;
     width: 100%;
     line-height: 1;
 }
 
 #fake {
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
-
-
+    background: #b1b9c6;
+ 
 }
 
 #newbox {
-  border-radius: 10px;
+  border-radius: 0px;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.1;
   width: auto;
   margin: auto;
   clear: both;
-    display: table;
+display: table;
 
 
   }
@@ -80,7 +137,7 @@ outline: none;
 
 /* Header css */
 #header {
-    height: 50px;
+    height: 100px;
     width: 100%;
     background: ;
     margin: 0 0 0 0;
