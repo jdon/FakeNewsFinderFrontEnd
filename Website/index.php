@@ -15,99 +15,75 @@
 		<script src="./js/dropdown.js"></script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<link rel="shortcut icon" href="http://www.yoursite.com/favicon.ico?v=2"/>
+		<link rel="shortcut icon" href=""/>
 
 <!--///////////////////////////////////////-->
 
-<script>
-$(window).load(function() {
-		search();
-		});
+<script> $(window).load(function() {
+    search();
+});
 
 function createCORSRequest(method, url) {
-  var xhr = new XMLHttpRequest();
-
-  if ("withCredentials" in xhr) {
-    	xhr.open(method, url, true);
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+        xhr.open(method, url, true);
     } else if (typeof XDomainRequest != "undefined") {
-    	xhr = new XDomainRequest();
-    	xhr.open(method, url);
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
     } else {
-    	xhr = null;
-  	}
-  return xhr;
+        xhr = null;
+    }
+    return xhr;
 }
 
 function search() {
     var xhr = createCORSRequest('GET', "http://fake.jdon.uk/url/" + encodeURIComponent($("#searchbox").val()));
     if (!xhr) {
-      throw new Error('CORS not supported');
+        throw new Error('CORS not supported');
     }
-
     xhr.onload = function(e) {
         if (this.status == 200) {
             var json = this.response;
-        }	
+        }
+        $.getJSON("tag-descriptions.json", function(data) {
+            console.log(data);
+            var obj = JSON.parse(json);
+            console.log(obj);    
+            if (!(obj.domain)) {
+                document.getElementById("domain").innerHTML = "";
+            } else {
+                document.getElementById("domain").innerHTML = "<span class='DomainID'>Wesbite: </span> <br>" + obj.domain;
+            }
+            if (!(obj.title)) {
+                document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
+            } else {
+                document.getElementById("title").innerHTML = "<span class='ArticleID'>Article Title: </span> <br>" + obj.title;
+            };
+            if (!(obj.author)) {
+                document.getElementById("author").innerHTML = "";
+            } else {
+                document.getElementById("author").innerHTML = "<span class='AuthorID'>Author: </span> <br>" + obj.author;
+            }
+            if (obj.domainList.fake) {
+                document.getElementById("fake").innerHTML = " <span class='FakeID'>FAKE</span> <br> Unfortunately, this article has been flagged based on our checks. <br> Check out our reasoning below. ";
 
-        	$.getJSON("tag-descriptions.json", function(data){
-
-        		console.log(data);
-
-				var obj = JSON.parse(json);
-				console.log(obj);
-
-			    if (!(obj.domain)) {
-			    	document.getElementById("domain").innerHTML = "";
-			    } else {
-			    	document.getElementById("domain").innerHTML = "Domain: <br>" + obj.domain;
-			    }
-				
-				if (!(obj.title)) {
-					document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
-				} else {
-					document.getElementById("title").innerHTML = "Article Title: <br> " + obj.title;
-				};
-
-				if (!(obj.author)) {
-					document.getElementById("author").innerHTML = "Sorry, we cannot find the author of this article";
-				} else {
-					document.getElementById("author").innerHTML = "Author: <br>" + obj.author;
-				}
-					
-			
-
-				if (obj.domainList.fake) {
-					document.getElementById("fake").innerHTML = "<br> Unfortunately, this article has been flagged based on our checks. See why below. <br>";
-
-					if (obj.domainList.notes.notes) {
-						document.getElementById("reasons").innerHTML = obj.domainList.notes.notes;
-					}
-
-					document.getElementById("type").innerHTML = " <br> Reasons";
-					
-					if (obj.domainList.notes.type1) {
-						document.getElementById("type1").innerHTML = data.tags[obj.domainList.notes.type1].description;
-					}
-
-					if (obj.domainList.notes.type2) {
-						document.getElementById("type2").innerHTML = data.tags[obj.domainList.notes.type2].description;
-					}
-
-					if (obj.domainList.notes.type3) {
-						document.getElementById("type3").innerHTML = data.tags[obj.domainList.notes.type3].description;
-					}
-
-				} else {
-					document.getElementById("fake").innerHTML = " <br> This article is deemed not fake based on our checks.";
-					document.getElementById("reasons").innerHTML = "";
-					document.getElementById("type").innerHTML = "";
-				}
-    		});    
+                document.getElementById("type").innerHTML = "<span class='AuthorID'>Reasons: </span> <br>";
+                if (obj.domainList.notes.type1) {
+                    document.getElementById("type1").innerHTML = data.tags[obj.domainList.notes.type1].description;
+                }
+                if (obj.domainList.notes.type2) {
+                    document.getElementById("type2").innerHTML = data.tags[obj.domainList.notes.type2].description;
+                }
+                if (obj.domainList.notes.type3) {
+                    document.getElementById("type3").innerHTML = data.tags[obj.domainList.notes.type3].description;
+                }
+            } else {
+                document.getElementById("fake").innerHTML = " <span class='FakeID'>NOT FAKE<br> </span>This article has been deemed not fake based on our checks.";
+            }
+        });
     };
-
     xhr.send();
-}
-</script>
+} </script>
 
 <!--///////////////////////////////////////////////-->
 	</head>
@@ -146,7 +122,7 @@ function search() {
 				<p id="domain"> </p>
 				<p id="title"> </p>
 				<p id="author"></p>
-				<p id="fake"></p>
+				<p id="fake"> </p>
 				<p id="reasons"></p>
 				<p id="type"></p>
 				<p id="type1"></p>
