@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
 		<link rel="stylesheet" type="text/css" href="./css/mobilecss.css">
 		<link href="./css/stylesheet" rel="stylesheet" type="text/css">
-		<link href="./css/mobcss" rel="stylesheet" type="text/css">
+		<link href="./css/mobilecss" rel="stylesheet" type="text/css">
 <!-- Dropdown -->
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/dropdown.js"></script>
@@ -45,40 +45,31 @@ function search() {
         if (this.status == 200) {
             var json = this.response;
         }
-
-        document.getElementById("domain").innerHTML = "";
-        document.getElementById("title").innerHTML = "";
-        document.getElementById("author").innerHTML = "";
-        document.getElementById("fake").innerHTML = "";
-        document.getElementById("reasons").innerHTML = "";
-        document.getElementById("type").innerHTML = "";
-        document.getElementById("type1").innerHTML = "";
-        document.getElementById("type2").innerHTML = "";
-        document.getElementById("type3").innerHTML = "";
-
         $.getJSON("tag-descriptions.json", function(data) {
             console.log(data);
             var obj = JSON.parse(json);
             console.log(obj);    
-            if (obj.domain) {
+            if (!(obj.domain)) {
+                document.getElementById("domain").innerHTML = "";
+            } else {
                 document.getElementById("domain").innerHTML = "<span class='DomainID'>Wesbite: </span> <br>" + obj.domain;
-            } 
-
+            }
             if (!(obj.title)) {
                 document.getElementById("title").innerHTML = "Sorry, the title of the article is not avaliable";
             } else {
                 document.getElementById("title").innerHTML = "<span class='ArticleID'>Article Title: </span> <br>" + obj.title;
             };
-            if (obj.author) {
+            if (!(obj.author)) {
+                document.getElementById("author").innerHTML = "";
+            } else {
                 document.getElementById("author").innerHTML = "<span class='AuthorID'>Author: </span> <br>" + obj.author;
-            } 
-            
+            }
             if (obj.domainList.fake) {
                 document.getElementById("fake").innerHTML = " <span class='FakeID'>FAKE</span> <br> Unfortunately, this article has been flagged based on our checks. <br> Check out our reasoning below. ";
 
-                document.getElementById("type").innerHTML = "<span class='AuthorID'>Reasons: </span> <br>";
+                document.getElementById("type").innerHTML = "<span class='AuthorID'>Reasons: </span>";
                 if (obj.domainList.notes.type1) {
-                    document.getElementById("type1").innerHTML = data.tags[obj.domainList.notes.type1].description;
+                    document.getElementById("type1").innerHTML =  data.tags[obj.domainList.notes.type1].description;
                 }
                 if (obj.domainList.notes.type2) {
                     document.getElementById("type2").innerHTML = data.tags[obj.domainList.notes.type2].description;
@@ -88,6 +79,8 @@ function search() {
                 }
             } else {
                 document.getElementById("fake").innerHTML = " <span class='FakeID'>NOT FAKE<br> </span>This article has been deemed not fake based on our checks.";
+                	document.getElementById("reasons").innerHTML = "";
+					document.getElementById("type").innerHTML = "";
             }
         });
     };
@@ -107,6 +100,7 @@ function search() {
 				<ul id="menu">
 					<li><a class="onpage" href="">Home</a></li>
 					<li><a href="./aboutus.html">About Us</a></li>
+					<li><a href="./aboutus.html">Extension</a></li>
 				</ul>
 
 
@@ -117,6 +111,7 @@ function search() {
 					<ul class="dropdownbox">
 						<li><a class="onpage" href="./index.html">Home</a></li>
 						<li><a href="./aboutus.html">About Us</a></li>
+						<li><a href="./aboutus.html">Extension</a></li>
 					</ul>
 			</div>
 			</nav>
@@ -131,12 +126,18 @@ function search() {
 				<p id="domain"> </p>
 				<p id="title"> </p>
 				<p id="author"></p>
+
+
+			<div id="OutboxFake">
 				<p id="fake"> </p>
-				<p id="reasons"></p>
+				</div>
+				
+			<div id="ty1">
 				<p id="type"></p>
 				<p id="type1"></p>
 				<p id="type2"></p>
 				<p id="type3"></p>
+				</div>
 			</div>
 			
 			<p> </p>
