@@ -10,6 +10,17 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 			for (var i = 0; i < response.length; i++) {
 				var row = table.insertRow(-1);
 				var linkCell = row.insertCell(-1);
+				var uri = encodeURIComponent(response[i]);
+				var jsonpath = ("http://fake.jdon.uk/url/" + uri);
+			//document.getElementById("domain").innerHTML = jsonpath;
+
+				$.getJSON(jsonpath, function(data){
+				var obj = data;
+					var node = document.createElement("LI");                 // Create a <li> node
+					var textnode = document.createTextNode(obj.title);
+					node.appendChild(textnode); 
+					document.getElementById("titles").appendChild(node);
+				});
 				linkCell.appendChild(document.createTextNode(response[i]));
 				linkCell.appendChild(document.createElement("br"));
 				var a = linkCell.appendChild(document.createElement("a"));
