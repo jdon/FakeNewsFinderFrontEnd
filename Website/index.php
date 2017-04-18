@@ -6,13 +6,8 @@
 
 		<title>Fake News Finders</title>
 
-		<link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
-		<link rel="stylesheet" type="text/css" href="./css/mobilecss.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheet.css">
 		<link href="./css/stylesheet" rel="stylesheet" type="text/css">
-		<link href="./css/mobilecss" rel="stylesheet" type="text/css">
-<!-- Dropdown -->
-		<script src="./js/jquery.min.js"></script>
-		<script src="./js/dropdown.js"></script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<link rel="shortcut icon" href=""/>
@@ -103,17 +98,6 @@ function search() {
 					<li><a href="./aboutus.html">Extension</a></li>
 				</ul>
 
-
-
-			<!-- Nav for mobile/tablet -->
-			<div class="dropdown">
-				<a class="dropdownmenu" href="./index.html#">☰</a>
-					<ul class="dropdownbox">
-						<li><a class="onpage" href="./index.html">Home</a></li>
-						<li><a href="./aboutus.html">About Us</a></li>
-						<li><a href="./aboutus.html">Extension</a></li>
-					</ul>
-			</div>
 			</nav>
 		</header>
 
