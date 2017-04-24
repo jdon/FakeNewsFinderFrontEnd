@@ -13,7 +13,7 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 				$.getJSON(jsonpath, function(data){
 					if (data.title) {
-						var link = "http://fake.shanney.co.uk/index.php/" + response[i]
+						var link = "http://fakenewsfinder.azurewebsites.net/test.php?url=" + response[i]
 						document.getElementById("output").innerHTML += "<p id='" + i + "'><a href='" + link + "' target='_blank'>" + data.title + "</a></p>";
 					}
 				});
