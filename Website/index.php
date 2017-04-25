@@ -19,24 +19,13 @@ $(window).load(function(){
     search();
 });
 
-function clear(){
-    //Clears page before loading new results
-    document.getElementById("domain").innerHTML = "";
-    document.getElementById("title").innerHTML = "";
-    document.getElementById("author").innerHTML = "";
-    document.getElementById("fake").innerHTML = "";
-    document.getElementById("type").innerHTML = "";
-    document.getElementById("type1").innerHTML = "";
-    document.getElementById("type2").innerHTML = "";
-    document.getElementById("type3").innerHTML = "";    
-}
 
 function search(){
     //http://weeklyworldnews.com/headlines/49503/leprechauns-attack/
     //http://www.bbc.co.uk/news/uk-39678863
-    clear();
+
     //Retrieve JSON from backend
-    var url = http://weeklyworldnews.com/headlines/49503/leprechauns-attack/;
+    var url = document.getelementByID("searchbox").value;
     var uri = encodeURIComponent(url);
     var jsonpath = ("http://fake.jdon.uk/url/" + uri);
     var jsonpath2 = "http://fakenewsfinder.azurewebsites.net/tag-descriptions.json"
