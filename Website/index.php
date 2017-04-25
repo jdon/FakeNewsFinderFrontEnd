@@ -103,7 +103,7 @@ function search(){
 
 			<div id="check">
 					<div class="search">
-	<input id="searchbox" value="<?php echo ltrim($_GET["url"], '/https:/') ?>" type="text">
+	<input id="searchbox" value="<?php echo $_GET["url"]?>" type="text">
 			<button class="button" onload="search()" onclick="search()">►</button>
 			
 			<div id="newbox">
