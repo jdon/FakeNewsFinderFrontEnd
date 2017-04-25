@@ -36,7 +36,7 @@ function search(){
     //http://www.bbc.co.uk/news/uk-39678863
     clear();
     //Retrieve JSON from backend
-    var url = document.getElementById("searchbox").value;
+    var url = http://weeklyworldnews.com/headlines/49503/leprechauns-attack/;
     var uri = encodeURIComponent(url);
     var jsonpath = ("http://fake.jdon.uk/url/" + uri);
     var jsonpath2 = "http://fakenewsfinder.azurewebsites.net/tag-descriptions.json"
