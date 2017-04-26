@@ -3,7 +3,7 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
     function(response) {
     	console.log(response);
-		document.getElementById("memes").innerHTML += "Here are all the links we found on the page, you can find out if they are fake or not by clicking them:";
+		document.getElementById("memes").innerHTML += "Here is the list of all the articles on the page that we believe to fake, click the link to find out more!";
 			for (let i = 0; i < response.length; i++) {
 
 				//returns the JSON file from backend
@@ -12,8 +12,8 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 				
 
 				$.getJSON(jsonpath, function(data){
-					if (data.title) {
-						var link = "http://fakenewsfinder.azurewebsites.net/test.php?url=" + response[i]
+					if (data.domainList.fake) {
+						var link = "http://fakenewsfinder.azurewebsites.net/index.php?url=" + response[i]
 						document.getElementById("output").innerHTML += "<p id='" + i + "'><a href='" + link + "' target='_blank'>" + data.title + "</a></p>";
 					}
 				});
