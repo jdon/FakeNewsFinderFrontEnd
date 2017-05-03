@@ -95,7 +95,8 @@ function search(){
 				<ul id="menu">
 					<li><a class="onpage" href="">Home</a></li>
 					<li><a href="./aboutus.html">About Us</a></li>
-					<li><a href="./aboutus.html">Extension</a></li>
+					<li><a href="http://www9.zippyshare.com/v/hIU5oxLZ/file.html
+" target="_blank">Extension</a></li>
 				</ul>
 
 			</nav>
