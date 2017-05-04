@@ -17,7 +17,9 @@
 <script>
 $(window).load(function(){
     search();
+	$('#img').hide();  // hide the loading message (since search() runs on page load).
 });
+
 
 function clear(){
     //Clears page before loading new results
@@ -32,6 +34,7 @@ function clear(){
 }
 
 function search(){
+	$('#img').show();  // show the loading message.
     //http://weeklyworldnews.com/headlines/49503/leprechauns-attack/
     //http://www.bbc.co.uk/news/uk-39678863
     clear();
@@ -40,12 +43,9 @@ function search(){
     var uri = encodeURIComponent(url);
     var jsonpath = ("http://fake.jdon.uk/url/" + uri);
     var jsonpath2 = "http://fakenewsfinder.azurewebsites.net/tag-descriptions.json"
-
     $.getJSON(jsonpath, function(data){
-
         console.log(data);
         $.getJSON(jsonpath2, function(tags){
-
             console.log(tags);
 
             if (data.domain) {
@@ -76,6 +76,7 @@ function search(){
             } else {
                 document.getElementById("fake").innerHTML = " <span class='FakeID'>NOT FAKE<br> </span>This article has been deemed not fake based on our checks.";
             }
+				$('#img').hide();  // hide it again now
         });
     });
 }
@@ -105,8 +106,8 @@ function search(){
 			<div id="check">
 					<div class="search">
 	<input id="searchbox" value="<?php echo $_GET["url"]?>" type="text">
-			<button class="button" onload="search()" onclick="search()">►</button>
-			
+			<button class= "button" id="searchButton" onload="search()" onclick="search()">►</button>
+			<img src=".\2.gif" id="img" style="display:none; inline;"/ >
 			<div id="newbox">
 				<p id="domain"> </p>
 				<p id="title"> </p>
